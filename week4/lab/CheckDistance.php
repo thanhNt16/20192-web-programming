@@ -1,51 +1,60 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title> Distance and time calculations</title>
-    </head>
-    <body>
-        <table>
-            <tr>
-                <th>No. </th>
-                <th>Destination </th>
-                <th>Distance </th>
-                <th>Driving time </th>
-                <th>Walking time </th>
-            </tr>
-            <?php
-            $cities = array('Dallas' => 803, 'Toronto' => 435, 'Boston' => 848,
-                'Nashville' => 406, 'Las Vegas' => 1526,
-                'San Francisco' => 1835, 'Washington, DC' => 595,
-                'Miami' => 1189, 'Pittsburgh' => 409);
-            $destinations = $_POST["destination"];
-
-            if (isset($cities[$destinations])) {
-                foreach ($destinations as $destination) {
-                    print "<tr>";
-                    print "<th>$destination</th>";
-                    print "</tr>";
-                }
-//                $distance = $cities[$destination];
-//                $time = round(($distance / 60), 2);
-//                $walktime = round(($distance / 5), 2);
-//
-//                print "<tr>";
-//                print "<th>$destination</th>";
-//                print "<th>$distance</th>";
-//                print "<th>$time</th>";
-//                print "<th>$walktime</th>";
-//
-//                print "</tr>";
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Distance and Time Calculator</title>
+    <style media="screen">
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <?php
+      $cities = array(
+        'Boston' => 848,
+        'Dallas' => 803,
+        'Miami' => 1189,
+        'Nashville' => 406,
+        'Las Vegas' => 1526,
+        'Pittsburgh' => 409,
+        'San Francisco' => 1835,
+        'Toronto' => 435,
+        'Washington, DC' => 595
+      );
+    ?>
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Destination</th>
+          <th>Distance</th>
+          <th>Driving time</th>
+          <th>Walking time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          $count = 1;
+          foreach ($_POST['destination'] as $destination) {
+            print '<tr>';
+            print "<td>$count</td>";
+            $count++;
+            if (isset($cities[$destination])) {
+              $distance = $cities[$destination];
+              $time = round($distance / 60, 2);
+              $walktime = round($distance / 5, 2);
+              print "<td>$destination</td>";
+              print "<td>$distance</td>";
+              print "<td>$time</td>";
+              print "<td>$walktime</td>";
             } else {
-                print "Sorry, do not have destination information for $destination";
+              print "<td>$destination</td><td colspan=\"3\">N/A</td>";
             }
-            ?>
-        </table>
-    </body>
-</html>
+            print('</tr>');
+          }
+        ?>
+      </tbody>
+    </table>
+  </body>
+</html> 
