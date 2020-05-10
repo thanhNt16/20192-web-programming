@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT student (fullname, studentid, class, university)>
+<!ELEMENT fullname (firstname, lastname)>
+<student>
+    <fullname>
+        <firstname>Thanh</firstname>
+        <lastname>Nguyen</lastname>
+    </fullname>
+    <studentid>
+        20163727
+    </studentid>
+    <class>
+        ICT.02-K61
+    </class>
+    <university>
+        HUST
+    </university>
+</student>
